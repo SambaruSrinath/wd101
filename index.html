@@ -7,26 +7,28 @@
     <title>Registration Form</title>
     <script>
         function validateDateOfBirth() {
-            // Get the input value
-            var dobInput = document.getElementById('dob').value;
+            var nameInput = document.getElementById('name').value;
+        var emailInput = document.getElementById('email').value;
+        var passwordInput = document.getElementById('password').value;
 
-            // Parse the input value to a Date object
-            var dob = new Date(dobInput);
-
-            // Get the current date
-            var currentDate = new Date();
-
-            // Calculate the age
-            var age = currentDate.getFullYear() - dob.getFullYear();
-
-            // Check if the age is between 18 and 55
-            if (age >= 18 && age <= 55) {
-                return true;
+        // Check if name, email, and password are filled
+        if (nameInput === '' || emailInput === '' || passwordInput === '') {
+            // If any of them is not filled, show an alert
+            alert('Please fill out all required fields: Name, Email, and Password.');
+            
+            // Set focus on the first unfilled field (Name, Email, or Password)
+            if (nameInput === '') {
+                document.getElementById('name').focus();
+            } else if (emailInput === '') {
+                document.getElementById('email').focus();
             } else {
-                alert('Invalid date of birth. Age must be between 18 and 55.');
-                return false;
+                document.getElementById('password').focus();
             }
+
+            // Prevent form submission
+            return false;
         }
+    }
     </script>
 </head>
 
